@@ -1,19 +1,12 @@
-import imgaug as ia
-from imgaug import augmenters as iaa
-
-#list of functions to be used in 'single augmentation per image' mode
-
-
-
-
-
-
 #list of functions to be used in 'sequential augmentation per image' mode, preserving the order in the list
 
+def double(x):
+    return 2*x
 
 func_dictionary = {'func1': lambda a: str(a),
                    'func2': lambda a: a * 4,
-                   'func3': lambda a: a * 3
+                   'func3': lambda a: a * 3,
+                   'func4': lambda a: double(a)
                    }
 
 
@@ -30,4 +23,4 @@ def perform_in_order(order,initial_arg):
     return order[0]
 
 
-print(perform_in_order(['func3','func2','func1'],2))
+print(perform_in_order(['func3','func2','func1','func4'],2))
